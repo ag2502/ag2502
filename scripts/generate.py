@@ -8,8 +8,10 @@
 A GITHUB_TOKEN in the environment unlocks contribution counts and streaks.
 """
 
+import datetime as dt
 import json
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -18,6 +20,30 @@ import gh  # noqa: E402
 import svg  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def stamp_readme(path):
+    """Bump a ?v= stamp on the card URLs in the README.
+
+    GitHub serves README images through its own image cache, keyed on a URL
+    that otherwise never changes - so a redrawn card can keep showing the old
+    version for a while. Changing the query string each render makes it a new
+    URL, and the theme fragment stays at the end where GitHub needs it.
+    """
+    if not os.path.exists(path):
+        return
+    stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%d%H%M")
+    with open(path, encoding="utf-8") as fh:
+        before = fh.read()
+    after = re.sub(
+        r"(\./assets/pr-(?:light|dark)\.svg)(?:\?v=[^\"#]*)?",
+        lambda m: "%s?v=%s" % (m.group(1), stamp),
+        before,
+    )
+    if after != before:
+        with open(path, "w", encoding="utf-8") as fh:
+            fh.write(after)
+        print("  stamped README.md with ?v=%s" % stamp)
 
 
 def main():
@@ -64,6 +90,8 @@ def main():
     with open(os.path.join(out_dir, "data.json"), "w", encoding="utf-8") as fh:
         json.dump(data, fh, indent=2, sort_keys=True)
     print("  wrote assets/data.json")
+
+    stamp_readme(os.path.join(ROOT, "README.md"))
 
 
 if __name__ == "__main__":
