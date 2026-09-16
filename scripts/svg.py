@@ -19,14 +19,14 @@ THEMES = {
         "text": "#1f2328", "muted": "#59636e", "link": "#0969da",
         "green": "#1f883d", "greenText": "#1a7f37", "red": "#cf222e",
         "add": "#e6ffec", "del": "#ffebe9", "addNum": "#cdf2d5", "delNum": "#ffd7d5",
-        "tab": "#fd8c73", "white": "#ffffff", "shadow": "0.06",
+        "tab": "#fd8c73", "white": "#ffffff", "shadow": "0.06", "key": "#0550ae",
     },
     "dark": {
         "bg": "#0d1117", "subtle": "#151b23", "border": "#3d444d", "line": "#2f363d",
         "text": "#e6edf3", "muted": "#9198a1", "link": "#4493f8",
         "green": "#238636", "greenText": "#3fb950", "red": "#f85149",
         "add": "#0f2d1a", "del": "#2a1618", "addNum": "#16391f", "delNum": "#3c1a1d",
-        "tab": "#fd8c73", "white": "#ffffff", "shadow": "0.4",
+        "tab": "#fd8c73", "white": "#ffffff", "shadow": "0.4", "key": "#79c0ff",
     },
 }
 
@@ -146,7 +146,9 @@ text{font-family:%s}
 
 
 def fmt(value):
-    if value is None or value == "":
+    if value == "":
+        return ""      # an unset config field renders as nothing, not a dash
+    if value is None:
         return "—"
     if isinstance(value, bool):
         return "yes" if value else "no"
@@ -251,6 +253,43 @@ def render(config, data, theme="light"):
     y += 13
     p.append(hline(X, y, CW, c["line"]))
     y += 26
+
+    # ------------------------------------------------------------ whoami
+    intro = config.get("intro")
+    if intro:
+        line_h = 22
+        head_h = 40
+        rows = []
+        for row in intro.get("rows", []):
+            key = row[0] if len(row) else ""
+            raw = row[1] if len(row) > 1 else ""
+            values = raw if isinstance(raw, list) else [raw]
+            values = [v for v in (I(str(v)) for v in values) if v.strip()]
+            if not values:
+                continue  # an unset value (no web link yet) drops its row
+            rows.append((key, values[0]))
+            for extra in values[1:]:
+                rows.append(("", extra))
+
+        if rows:
+            key_w = max(w_mono(k + ":", 12.5) for k, _ in rows) + 16
+            card_h = head_h + line_h * len(rows) + 14
+            p.append(rect(X, y, CW, card_h, c["bg"], r=6, stroke=c["border"]))
+            p.append(top_rounded(X + 0.5, y + 0.5, CW - 1, head_h, 5.5, c["subtle"]))
+            p.append(hline(X, y + head_h, CW, c["border"]))
+            p.append('<text x="%s" y="%s" font-size="12.5" fill="%s">'
+                     '<tspan font-weight="600" fill="%s">%s</tspan> commented'
+                     '<tspan fill="%s">  \u00b7  opened this pull request</tspan></text>'
+                     % (X + 16, y + 25, c["muted"], c["text"], esc(data.get("handle", "")),
+                        c["muted"]))
+            p.append(txt(X + CW - 16, y + 25, I(intro.get("file", "")), 12,
+                         c["muted"], mono=True, anchor="end"))
+            for i, (key, value) in enumerate(rows):
+                ry = y + head_h + 12 + line_h * i + 4
+                if key:
+                    p.append(txt(X + 16, ry, key + ":", 12.5, c["key"], mono=True, bold=True))
+                p.append(txt(X + 16 + key_w, ry, value[:96], 12.5, c["text"], mono=True))
+            y += card_h + 16
 
     # ----------------------------------------------------------------- diffs
     delay[0] = 0.2

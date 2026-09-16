@@ -33,11 +33,24 @@ def main():
         sys.exit("no handle: set \"handle\" in profile.config.json or pass --handle")
 
     token = os.environ.get("GITHUB_TOKEN") or os.environ.get("PROFILE_TOKEN")
-    if "--demo" in args:
+    demo = "--demo" in args
+    if demo:
         data = gh.demo()
         print("> using demo data")
     else:
         data = gh.collect(handle, token)
+
+    # A rate-limited or offline run must never overwrite a good card with an
+    # empty one: bail out and leave the committed SVGs in place.
+    if not demo and not data.get("repos"):
+        sys.exit("aborting: GitHub returned no repositories (rate limited or "
+                 "offline). The existing assets were left untouched.")
+
+    # Static config values are addressable as tokens too, so a field like
+    # "web" can be written once in the config and used anywhere in the copy.
+    for key, value in config.items():
+        if isinstance(value, (str, int, float)) and key not in data:
+            data[key] = value
 
     out_dir = os.path.join(ROOT, "assets")
     os.makedirs(out_dir, exist_ok=True)

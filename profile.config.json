@@ -2,13 +2,13 @@
   "handle": "ag2502",
   "pr_number": 2502,
   "state": "Open",
-  "title": "feat(amogh): real-time voice AI, now in Dublin",
+  "title": "feat(amogh): AI/ML engineer, shipping in Dublin",
   "alt": "Amogh Gaikwad's GitHub profile, laid out as a pull request",
   "base": "main",
   "head": "dublin-2026",
   "diffs": [
     {
-      "file": "about.md",
+      "file": "career.md",
       "start": 1,
       "lines": [
         [
@@ -21,15 +21,19 @@
         ],
         [
           "add",
-          "SDE I, shipping real-time Voice AI to production for BFSI"
+          "AI/ML engineer, shipping LLM and speech systems to production"
         ],
         [
           "add",
           "MSc Data & Computational Science @ UCD, Dublin (2026-27)"
         ],
         [
+          "add",
+          "Microsoft Certified: Azure Data Scientist Associate"
+        ],
+        [
           "ctx",
-          "stack: {{top_language}}, PyTorch, vLLM, LiveKit, Neo4j, FAISS"
+          "open to part-time, internship and graduate roles"
         ]
       ]
     },
@@ -62,28 +66,6 @@
           "  serving: vLLM, SGLang, llama.cpp, quantised, self-provisioned GPUs"
         ]
       ]
-    },
-    {
-      "file": "metrics.json",
-      "start": 3,
-      "lines": [
-        [
-          "ctx",
-          "  \"concurrent_conversations\": 15,"
-        ],
-        [
-          "del",
-          "  \"word_error_rate\": 0.19,"
-        ],
-        [
-          "add",
-          "  \"word_error_rate\": 0.12,        // LoRA fine-tune, -37% relative"
-        ],
-        [
-          "add",
-          "  \"retrieval\": \"GraphRAG on Neo4j + FalkorDB + FAISS\""
-        ]
-      ]
     }
   ],
   "checks": [
@@ -96,6 +78,11 @@
       "name": "perf / inference-cost",
       "detail": "re-architected the STT, LLM and TTS pipeline on-premise",
       "value": "-79% per call-minute"
+    },
+    {
+      "name": "cert / azure",
+      "detail": "Microsoft Certified: Azure Data Scientist Associate",
+      "value": "verified"
     },
     {
       "name": "build / github",
@@ -149,5 +136,75 @@
       "label": "Dublin, Ireland"
     }
   ],
-  "footer": "auto-generated {{today}} · {{top_language}} · {{years_on_github}} yrs on GitHub"
+  "footer": "auto-generated {{today}} · {{top_language}} · {{years_on_github}} yrs on GitHub",
+  "intro": {
+    "file": "whoami.yaml",
+    "rows": [
+      [
+        "role",
+        "AI/ML Engineer  ·  Data Analyst  ·  LLM systems, speech, retrieval"
+      ],
+      [
+        "location",
+        "Ireland / India  ·  based in Dublin"
+      ],
+      [
+        "education",
+        [
+          "MSc Data & Computational Science, University College Dublin (2026-27)",
+          "BTech Information Technology, major in Data Science — CGPA 9.83/10"
+        ]
+      ],
+      [
+        "experience",
+        [
+          "1 yr production  ·  SDE I @ AI NXT Technovations (promoted from AI/ML trainee)",
+          "Research Intern @ DY Patil Innovation Foundation — deep learning for audio"
+        ]
+      ],
+      [
+        "worked on",
+        [
+          "real-time Voice AI for banking, financial services and insurance",
+          "LLM serving and fine-tuning, RAG + GraphRAG retrieval, audio classification"
+        ]
+      ],
+      [
+        "achieved",
+        [
+          "-79% inference cost  ·  word error rate 19% -> 12%  ·  latency under 2s",
+          "live for enterprise clients at 4,000-15,000 calls/day, 20+ Indic languages"
+        ]
+      ],
+      [
+        "languages",
+        "Python, SQL, JavaScript, Bash"
+      ],
+      [
+        "tech",
+        [
+          "PyTorch, TensorFlow, Keras, Scikit-learn, Pandas/NumPy, FastAPI",
+          "vLLM, SGLang, llama.cpp, LiveKit, Pipecat, Neo4j, FalkorDB, FAISS",
+          "Docker, Nginx, Azure, on-premise and air-gapped deployment"
+        ]
+      ],
+      [
+        "certified",
+        "Microsoft Certified: Azure Data Scientist Associate"
+      ],
+      [
+        "interests",
+        "Model optimisation, dynamic pricing, data visualisation, gaming"
+      ],
+      [
+        "web",
+        "{{web}}"
+      ],
+      [
+        "github",
+        "github.com/{{handle}}  ·  {{repos}} public repos  ·  {{top_language}}"
+      ]
+    ]
+  },
+  "web": ""
 }
