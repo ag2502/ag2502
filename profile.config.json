@@ -1,0 +1,153 @@
+{
+  "handle": "ag2502",
+  "pr_number": 2502,
+  "state": "Open",
+  "title": "feat(amogh): real-time voice AI, now in Dublin",
+  "alt": "Amogh Gaikwad's GitHub profile, laid out as a pull request",
+  "base": "main",
+  "head": "dublin-2026",
+  "diffs": [
+    {
+      "file": "about.md",
+      "start": 1,
+      "lines": [
+        [
+          "ctx",
+          "# Amogh Gaikwad"
+        ],
+        [
+          "del",
+          "AI/ML trainee, learning the stack from tutorials"
+        ],
+        [
+          "add",
+          "SDE I, shipping real-time Voice AI to production for BFSI"
+        ],
+        [
+          "add",
+          "MSc Data & Computational Science @ UCD, Dublin (2026-27)"
+        ],
+        [
+          "ctx",
+          "stack: {{top_language}}, PyTorch, vLLM, LiveKit, Neo4j, FAISS"
+        ]
+      ]
+    },
+    {
+      "file": "voice_pipeline.yaml",
+      "start": 12,
+      "lines": [
+        [
+          "ctx",
+          "pipeline: stt -> llm -> tts      # 4,000-15,000 calls/day, 20+ Indic languages"
+        ],
+        [
+          "del",
+          "  host: cloud-api               # €0.070 per call-minute"
+        ],
+        [
+          "add",
+          "  host: on-prem, zero-cloud     # €0.015 per call-minute  (-79%)"
+        ],
+        [
+          "del",
+          "  latency: ~5s"
+        ],
+        [
+          "add",
+          "  latency: <2s                  # frame-based streaming on LiveKit + Pipecat"
+        ],
+        [
+          "add",
+          "  serving: vLLM, SGLang, llama.cpp, quantised, self-provisioned GPUs"
+        ]
+      ]
+    },
+    {
+      "file": "metrics.json",
+      "start": 3,
+      "lines": [
+        [
+          "ctx",
+          "  \"concurrent_conversations\": 15,"
+        ],
+        [
+          "del",
+          "  \"word_error_rate\": 0.19,"
+        ],
+        [
+          "add",
+          "  \"word_error_rate\": 0.12,        // LoRA fine-tune, -37% relative"
+        ],
+        [
+          "add",
+          "  \"retrieval\": \"GraphRAG on Neo4j + FalkorDB + FAISS\""
+        ]
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "name": "deploy / production",
+      "detail": "voice agents live for Sharekhan, Fynd and NJ E-Wealth",
+      "value": "up to 15,000 calls/day"
+    },
+    {
+      "name": "perf / inference-cost",
+      "detail": "re-architected the STT, LLM and TTS pipeline on-premise",
+      "value": "-79% per call-minute"
+    },
+    {
+      "name": "build / github",
+      "detail": "{{active_repos}} repos pushed in the last 30 days",
+      "value": "{{repos}} public repos"
+    },
+    {
+      "name": "lint / consistency",
+      "detail": "{{contributions}} contributions in the last year",
+      "value": "{{streak}} day streak",
+      "require": "contributions"
+    },
+    {
+      "name": "test / academics",
+      "detail": "MSc at University College Dublin, BTech IT (Data Science)",
+      "value": "CGPA 9.83 / 10"
+    }
+  ],
+  "reviewers": [
+    {
+      "done": true,
+      "label": "Measures before optimising — 79% cost cut, 37% lower word error rate"
+    },
+    {
+      "done": true,
+      "label": "Ships to production, not to localhost — enterprise BFSI clients, live"
+    },
+    {
+      "done": true,
+      "label": "Owns delivery end to end — requirements, integration, go-live, tuning"
+    },
+    {
+      "done": false,
+      "link": true,
+      "label": "Hire me — amogh.g2003@gmail.com"
+    }
+  ],
+  "merge": {
+    "button": "Merge pull request",
+    "note": "Open to part-time, internship and graduate roles in Dublin.",
+    "note2": "Machine learning · Data science · Applied AI · available now"
+  },
+  "links": [
+    {
+      "label": "linkedin.com/in/amoghgaikwad25"
+    },
+    {
+      "label": "amogh.g2003@gmail.com"
+    },
+    {
+      "label": "Dublin, Ireland"
+    }
+  ],
+  "footer": "auto-generated {{today}} · {{top_language}} · {{years_on_github}} yrs on GitHub"
+}

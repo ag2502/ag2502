@@ -1,0 +1,42 @@
+{
+  "active_repo_names": [
+    "Tellerline",
+    "Job-Finder-for-Ireland"
+  ],
+  "active_repos": 2,
+  "best_day": null,
+  "best_day_date": "",
+  "bio": "",
+  "blog": "",
+  "commits": 34,
+  "contributions": null,
+  "followers": 3,
+  "generated_at": "2026-09-16 13:06 UTC",
+  "handle": "ag2502",
+  "joined": "2022-10-04",
+  "language_count": 6,
+  "languages": [
+    "Python",
+    "HTML",
+    "Shell",
+    "Makefile",
+    "JavaScript",
+    "CSS"
+  ],
+  "languages_top3": "Python, HTML, Shell",
+  "location": "",
+  "name": "ag2502",
+  "prs": null,
+  "public_repos": 14,
+  "repos": 13,
+  "stars": 0,
+  "streak": null,
+  "today": "2026-09-16",
+  "top_language": "Python",
+  "top_repo": "Tellerline",
+  "top_repo_desc": "",
+  "top_repo_language": "Python",
+  "top_repo_pushed": "2026-09-15",
+  "year": 2026,
+  "years_on_github": 4.0
+}
