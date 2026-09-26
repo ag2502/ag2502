@@ -1,6 +1,6 @@
 <p align="center">
-  <img src="./assets/pr-light.svg?v=202609251014#gh-light-mode-only" width="880" alt="Amogh Gaikwad — AI/ML engineer building real-time Voice AI, MSc Data and Computational Science at UCD Dublin. Profile laid out as a GitHub pull request.">
-  <img src="./assets/pr-dark.svg?v=202609251014#gh-dark-mode-only" width="880" alt="Amogh Gaikwad — AI/ML engineer building real-time Voice AI, MSc Data and Computational Science at UCD Dublin. Profile laid out as a GitHub pull request.">
+  <img src="./assets/pr-light.svg?v=202609260955#gh-light-mode-only" width="880" alt="Amogh Gaikwad — AI/ML engineer building real-time Voice AI, MSc Data and Computational Science at UCD Dublin. Profile laid out as a GitHub pull request.">
+  <img src="./assets/pr-dark.svg?v=202609260955#gh-dark-mode-only" width="880" alt="Amogh Gaikwad — AI/ML engineer building real-time Voice AI, MSc Data and Computational Science at UCD Dublin. Profile laid out as a GitHub pull request.">
 </p>
 
 <p align="center">
